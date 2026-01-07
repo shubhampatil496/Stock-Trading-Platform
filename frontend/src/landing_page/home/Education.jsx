@@ -1,9 +1,16 @@
-import React from "react"
-
 export default function Education(){
     return(
         <>
-            <h1>Education</h1>
+            <div className="container">
+                <div className="row">
+                    <div className="col-6">
+                        <img src="/media" alt="" />
+                    </div>
+                    <div className="col-6">
+
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
