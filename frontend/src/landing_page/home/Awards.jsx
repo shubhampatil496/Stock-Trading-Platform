@@ -9,7 +9,7 @@ export default function Awards(){
                     </div>
                     {/* Second Column */}
                     <div className="col-6 p-5 mt-4">
-                        <h1>Largest stock broker in India</h1>
+                        <h1 className="fs-2">Largest stock broker in India</h1>
                         <p className="mt-2">2+ million Zerodha clients contribute to over 15% of all retail order <br />volumes in India daily by trading and investing in :</p>
 
                         <div className="row mt-5">

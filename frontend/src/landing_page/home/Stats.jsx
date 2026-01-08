@@ -4,7 +4,7 @@ export default function Stats(){
             <div className="container">
                 <div className="row p-5">
                     <div className="col-6 p-5">
-                        <h2 className="mb-5 fs-4">Trust with confidence</h2>
+                        <h2 className="mb-5 fs-2">Trust with confidence</h2>
 
                         <h3 className="fs-5">Customer-first always</h3>
                         <p className="text-muted">That's why 1.6+ crore customers trust Zerodha with ~ ₹6 <br /> lakh crores of equity investments</p>
