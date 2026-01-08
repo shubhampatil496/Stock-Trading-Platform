@@ -1,10 +1,10 @@
 export default function Pricing(){
     return(
         <>
-            <div className="container">
-                <div className="row p-5">
+            <div className="container mb-5">
+                <div className="row p-5 mb-5">
                     <div className="col-4">
-                        <h2 className="mb-3">Unbeatable pricing</h2>
+                        <h2 className="mb-3 fs-2">Unbeatable pricing</h2>
                         <p>We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.</p>
                         <a style={{textDecoration:"none"}} href="">See pricing <i class="fa-solid fa-arrow-right-long"></i></a>
                     </div>
