@@ -13,7 +13,9 @@ export default function Education(){
                             <a style={{textDecoration:"none"}} href="">Varsity <i class="fa-solid fa-arrow-right-long"></i></a>
                         </p>
                         <p>TradingQ&A, the most active and trading investment community in <br />India for all your market related queries  </p>
-                         <a style={{textDecoration:"none"}} href="">TradingQ&A <i class="fa-solid fa-arrow-right-long"></i></a>
+                         <p className="mb-5">
+                            <a style={{textDecoration:"none"}} href="">TradingQ&A <i class="fa-solid fa-arrow-right-long"></i></a>
+                         </p>
                     </div>
                 </div>
             </div>
