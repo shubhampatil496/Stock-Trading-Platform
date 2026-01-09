@@ -6,7 +6,7 @@ export default function Navbar() {
     <>
       <nav
         class="navbar navbar-expand-lg sticky-top border-bottom"
-        style={{ backgroundColor: "#ffffffff", opacity: "0.9" }}
+        style={{ backgroundColor: "#ffffffff" }}
       >
         <div class="container py-2">
           <Link class="navbar-brand" to='/'>
