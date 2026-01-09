@@ -1,5 +1,5 @@
-import React from "react";
 import "../index.css";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -9,42 +9,37 @@ export default function Navbar() {
         style={{ backgroundColor: "#ffffffff", opacity: "0.9" }}
       >
         <div class="container py-2">
-          <a class="navbar-brand" href="#">
+          <Link class="navbar-brand" to='/'>
             <img src="/media/logo.svg" alt="logo" style={{ width: "25%" }} />
-          </a>
+          </Link>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="d-flex" role="search">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">
+                  <Link class="nav-link active" aria-current="page" to='/signup'>
                     Signup
-                  </a>
+                  </Link>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">
+                  <Link class="nav-link active" to='/about'>
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">
+                  <Link class="nav-link active" to='/products'>
                     Products
-                  </a>
+                  </Link>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">
+                  <Link class="nav-link active" to='/pricing'>
                     Pricing
-                  </a>
+                  </Link>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">
+                  <Link class="nav-link active" to='/support'>
                     Support
-                  </a>
-                </li>
-                 <li class="nav-item">
-                  <a class="nav-link active" href="#">
-                    <i class="fa-solid fa-bars"></i>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </form>
