@@ -1,7 +1,6 @@
 export default function Team(){
     return(
         <>
-            
             <div className="container border-top">
                 <div className="row p-5 mt-4">
                     <h2 className="text-center mb-5">PEOPLE</h2>
