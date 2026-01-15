@@ -7,7 +7,7 @@ export default function Footer(){
             <div className="container mt-5">
                 <div className="row mt-5">
                     <div className="col">
-                        <img src="/media/logo.svg" alt="logo" style={{width:"45%"}} />
+                        <img src="/media/logo.svg" className="mb-3" alt="logo" style={{width:"45%"}} />
                         <p className="text-muted">&copy;2010 - 2026, Not Zerodha Broking Ltd. <br /> All rights reserved.</p>
                     </div>
                     <div className="col">
