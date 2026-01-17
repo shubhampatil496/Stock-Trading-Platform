@@ -1,7 +1,32 @@
 import "../index.css";
 import { Link } from "react-router-dom";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 
 export default function Navbar() {
+
+  let tl = gsap.timeline()
+    useGSAP(() => {
+      tl.from("nav .navbar-brand",{
+      y:-20,
+      duration:0.3,
+      delay:0.5,
+      opacity:0,
+      stagger:0.2
+      })
+    })
+
+    useGSAP( () => {
+      tl.from("nav .nav-item",{
+      y:-20,
+      duration:0.3,
+      delay:0.5,
+      opacity:0,
+      stagger:0.2
+    })
+    })
+
   return (
     <>
       <nav
