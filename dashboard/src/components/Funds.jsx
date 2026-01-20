@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 export default function Funds() {
   return (
     <>
+    <div className="funds-content">
       <div className="funds">
         <p>Instant, zero-cost fund transfers with UPI </p>
         <Link className="btn btn-green">Add funds</Link>
@@ -15,7 +16,7 @@ export default function Funds() {
             <p>Equity</p>
           </span>
 
-          <div className="table">
+          <div className="table" style={{width:"25vw"}}>
             <div className="data">
               <p>Available margin</p>
               <p className="imp colored">4,043.10</p>
@@ -73,12 +74,13 @@ export default function Funds() {
           </div>
         </div>
 
-        <div className="col">
+        <div className="col" style={{marginRight:"4vw"}}>
           <div className="commodity">
             <p>You don't have a commodity account</p>
             <Link className="btn btn-blue">Open Account</Link>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

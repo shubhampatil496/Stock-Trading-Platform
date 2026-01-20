@@ -1,6 +1,7 @@
 export default function Positions() {
   return (
     <>
+    <div className="positions-content">
       <h3 className="title">Positions (2)</h3>
 
       <div className="order-table">
@@ -15,6 +16,7 @@ export default function Positions() {
             <th>Chg.</th>
           </tr>
         </table>
+      </div>
       </div>
     </>
   );
