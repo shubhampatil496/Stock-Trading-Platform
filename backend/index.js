@@ -11,6 +11,8 @@ const mongoose = require("mongoose");
 const { HoldingsModel } = require("./Model/HoldingsModel");
 // positions model
 const { PositionsModel } = require("./Model/PositionsModel");
+// orders model
+const { OrdersModel } = require("./Model/OrdersModel")
 
 app.use(express.json());
 
@@ -206,6 +208,17 @@ app.get("/allHoldings", async (req,res) => {
 app.get("/allPositions", async (req,res) => {
   let allPositions = await PositionsModel.find({});
   res.json(allPositions);
+});
+
+app.post("/newOrder", async (req,res) => {
+  let newOrder = new OrdersModel({
+    name: req.body.name,
+    qty: req.body.qty,
+    price: req.body.price,
+    mode: req.body.mode,
+  });
+  newOrder.save();
+  res.send("Order Saved!");
 });
 
 app.listen(PORT, () => {
