@@ -1,6 +1,6 @@
 import { Tooltip, Grow } from "@mui/material";
-import React, { useState, useContext } from "react"; // 1. Import useContext
-import GeneralContext from "./GeneralContext"; // 2. Import the Context
+import React, { useState, useContext } from "react"; 
+import GeneralContext from "./GeneralContext"; 
 import { watchlist } from "../data/data";
 import {
   BarChartOutlined,
@@ -8,6 +8,8 @@ import {
   KeyboardArrowUp,
   MoreHoriz,
 } from "@mui/icons-material";
+
+
 
 export default function WatchList() {
   const { openBuyWindow } = useContext(GeneralContext);
