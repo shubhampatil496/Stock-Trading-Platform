@@ -1,6 +1,20 @@
 import { Link } from 'react-router-dom';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function Hero(){
+
+    let tl = gsap.timeline()
+
+    useGSAP(() => {
+        tl.from("img",{
+            y:-20,
+            opacity:0,
+            duration:1,
+            delay:1
+        })
+    })
+
     return(
         <>
             <div className="container p-5 mb-5">
