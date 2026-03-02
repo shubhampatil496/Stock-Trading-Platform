@@ -1,39 +1,30 @@
 import React, { useState } from 'react';
 
 
-const Signup = () => {
- 
+
+const Login = () => {
   const [formData, setFormData] = useState({
-    username: '', 
     email: '',
     password: ''
   });
-  
-  
   const [message, setMessage] = useState('');
 
- 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
-    setMessage(''); 
+    e.preventDefault();
+    setMessage('');
 
     try {
       
-      const response = await fetch('http://localhost:3000/signup', {
+      const response = await fetch('http://localhost:3000/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: formData.username,
           email: formData.email,
           password: formData.password
         }),
@@ -42,23 +33,21 @@ const Signup = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage('Signup successful!');
+       
+        localStorage.setItem('token', data.token);
         localStorage.setItem('username', data.username);
         
-        
-        localStorage.setItem('token', data.token);
-        
-
-        setFormData({ username: '', email: '', password: '' });
-       setTimeout(() => {
+        setMessage('Login successful!');
+        setFormData({ email: '', password: '' });
+        setTimeout(() => {
          
           window.location.href = 'http://localhost:5174'; 
         }, 1000);
       } else {
-        setMessage(data.error || 'Signup failed. Please try again.');
+        setMessage(data.error || 'Login failed. Please check your credentials.');
       }
     } catch (error) {
-      console.error('Error during signup:', error);
+      console.error('Error during login:', error);
       setMessage('Cannot connect to the server. Is your backend running?');
     }
   };
@@ -67,40 +56,36 @@ const Signup = () => {
     <div className="signup-wrapper">
       <div className="signup-container">
         
-        {/* Left Panel */}
+        
         <div className="left-panel">
-          <h2>Come join us!</h2>
+          <h2>Welcome Back!</h2>
           <p>
-            We are so excited to have you here. If you haven't already, create an account to get access to exclusive offers, rewards, and discounts.
+            To keep connected with us please login with your personal info to access your dashboard and manage your watchlist.
           </p>
-         
+          
         </div>
 
-        {/* Right Panel */}
+
+      
         <div className="right-panel">
-          <h2 className="signup-heading">Signup</h2>
+          <h2 className="signup-heading">Signin</h2>
           
-         
+          
           {message && (
-            <div style={{ textAlign: 'center', marginBottom: '10px', color: message.includes('successful') ? 'green' : 'red' }}>
+            <div style={{ 
+              textAlign: 'center', 
+              marginBottom: '10px', 
+              color: message.includes('successful') ? 'green' : 'red' 
+            }}>
               {message}
             </div>
           )}
 
-          
           <form className="signup-form" onSubmit={handleSubmit}>
-            <input 
-              type="text" 
-              name="username" 
-              placeholder="Name" 
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
             <input 
               type="email" 
               name="email" 
-              placeholder="email" 
+              placeholder="Email address" 
               value={formData.email}
               onChange={handleChange}
               required
@@ -114,10 +99,10 @@ const Signup = () => {
               required
             />
             
-       
-            <button type="submit" className="signup-btn">Signup</button>
+            <button type="submit" className="signup-btn">Signin</button>
           </form>
 
+         
         </div>
 
       </div>
@@ -125,4 +110,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
