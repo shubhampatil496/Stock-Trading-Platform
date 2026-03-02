@@ -12,12 +12,17 @@ const { HoldingsModel } = require("./Model/HoldingsModel");
 // positions model
 const { PositionsModel } = require("./Model/PositionsModel");
 // orders model
-const { OrdersModel } = require("./Model/OrdersModel")
+const { OrdersModel } = require("./Model/OrdersModel");
+
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const UserModel = require('./Model/UserModel');
 
 app.use(express.json());
 
 const PORT = process.env.PORT || 3002;
 const URL = process.env.MONGO_URL;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -208,6 +213,77 @@ app.get("/allHoldings", async (req,res) => {
 app.get("/allPositions", async (req,res) => {
   let allPositions = await PositionsModel.find({});
   res.json(allPositions);
+});
+
+// Add the Signup Route
+app.post('/signup', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  try {
+    // 1. Check if user already exists
+    const existingUser = await UserModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: 'User already exists' });
+    }
+
+    // 2. Hash the password for security
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    // 3. Create and save the new user using your structured Model
+    const newUser = new UserModel({
+      username,
+      email,
+      password: hashedPassword
+    });
+    await newUser.save();
+
+    // 4. Generate a JWT token so they can stay logged in
+    const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(201).json({ 
+  message: 'User created successfully', 
+  token: token,
+  username: newUser.username // <--- Send the username back!
+});
+  } catch (error) {
+    console.error("Signup error:", error);
+    res.status(500).json({ error: 'Server error during signup' });
+  }
+});
+
+// Add this below your app.post('/api/signup', ...) route in backend/index.js
+
+app.post('/signin', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // 1. Check if the user exists in the database
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid email or password' });
+    }
+
+    // 2. Compare the typed password with the hashed password in the database
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: 'Invalid email or password' });
+    }
+
+    // 3. If passwords match, generate a new JWT token
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'fallback_super_secret_key', { expiresIn: '1h' });
+
+    // 4. Send the token back to the React frontend
+    res.status(200).json({ 
+  message: 'Login successful', 
+  token: token,
+  username: user.username // <--- Send the username back!
+});
+    
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ error: 'Server error during login' });
+  }
 });
 
 app.post("/newOrder", async (req,res) => {
