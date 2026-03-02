@@ -2,3 +2,158 @@
   margin-left: 30px;
 }
 
+/* Full page wrapper to mimic the gray background */
+.signup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #FBFBFB; /* Matches the outer gray background */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Main card container */
+.signup-container {
+  display: flex;
+  width: 900px;
+  max-width: 100%;
+  height: 500px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Left Panel Styles --- */
+.left-panel {
+  flex: 1;
+  background-color: #387ED1; /* Vibrant blue background */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 50px;
+  text-align: center;
+}
+
+.left-panel h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.left-panel p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.signin-btn {
+  background-color: #387ED1; /* Darker blue for the button */
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px; /* Pill shape */
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signin-btn:hover {
+  background-color: #1a499d;
+}
+
+/* --- Right Panel Styles --- */
+.right-panel {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 15px;
+  border: none;
+  background-color: #f2f2f2; /* Light gray input background */
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.signup-btn {
+  background-color: #387ED1; /* Matches left panel blue */
+  color: #ffffff;
+  border: none;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: opacity 0.3s;
+}
+
+.signup-btn:hover {
+  opacity: 0.9;
+}
+
+/* --- Social Signup Section --- */
+.social-signup {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-signup p {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.icon.facebook {
+  background-color: #4267B2; 
+}
+
+.icon.google {
+  background-color: #DB4437;
+  font-size: 12px;
+}
+
+.icon.linkedin {
+  background-color: #0077B5;
+}

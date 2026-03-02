@@ -42,6 +42,11 @@ export default function Navbar() {
             <form class="d-flex" role="search">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5">
                 <li class="nav-item">
+                  <Link class="nav-link active" aria-current="page" to='/signin'>
+                    SignIn
+                  </Link>
+                </li>
+                <li class="nav-item">
                   <Link class="nav-link active" aria-current="page" to='/signup'>
                     Signup
                   </Link>
