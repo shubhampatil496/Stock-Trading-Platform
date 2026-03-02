@@ -220,17 +220,17 @@ app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // 1. Check if user already exists
+   
     const existingUser = await UserModel.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: 'User already exists' });
     }
 
-    // 2. Hash the password for security
+   
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    // 3. Create and save the new user using your structured Model
+
     const newUser = new UserModel({
       username,
       email,
@@ -238,13 +238,12 @@ app.post('/signup', async (req, res) => {
     });
     await newUser.save();
 
-    // 4. Generate a JWT token so they can stay logged in
     const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: '1h' });
 
     res.status(201).json({ 
   message: 'User created successfully', 
   token: token,
-  username: newUser.username // <--- Send the username back!
+  username: newUser.username 
 });
   } catch (error) {
     console.error("Signup error:", error);
@@ -252,32 +251,31 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-// Add this below your app.post('/api/signup', ...) route in backend/index.js
-
+//signin route
 app.post('/signin', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // 1. Check if the user exists in the database
+    
     const user = await UserModel.findOne({ email });
     if (!user) {
       return res.status(400).json({ error: 'Invalid email or password' });
     }
 
-    // 2. Compare the typed password with the hashed password in the database
+    
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ error: 'Invalid email or password' });
     }
 
-    // 3. If passwords match, generate a new JWT token
+ 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'fallback_super_secret_key', { expiresIn: '1h' });
 
-    // 4. Send the token back to the React frontend
+   
     res.status(200).json({ 
   message: 'Login successful', 
   token: token,
-  username: user.username // <--- Send the username back!
+  username: user.username
 });
     
   } catch (error) {
