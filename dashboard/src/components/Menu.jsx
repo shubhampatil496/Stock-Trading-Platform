@@ -6,6 +6,12 @@ export default function Menu() {
   const [selectedMenu, setSelectedMenu] = useState(0)
   const [isProfileDropDown, setIsProfileDropDown] = useState(false)
 
+  // 1. Get the username from local storage (Fallback to 'User' if missing)
+  const username = localStorage.getItem("username") || "User";
+  
+  // 2. Extract the first 2 letters for the Avatar and make them uppercase
+  const avatar = username.slice(0, 2).toUpperCase();
+
   let handleMenuClick = (index) => {
     setSelectedMenu(index)
   }
@@ -58,18 +64,13 @@ export default function Menu() {
                 <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>Funds</p>
               </Link>
             </li>
-            <li>
-              <Link style={{textDecoration:"none"}} to="/apps" onClick={() => {
-                handleMenuClick(5)
-              }}>
-                <p className={selectedMenu === 5 ? activeMenuClass : menuClass}>Apps</p>
-              </Link>
-            </li>
+            
           </ul>
           <hr />
-          <div className="profile">
-            <div className="avatar">ZU</div>
-            <p className="username">USERID</p>
+          {/* 3. Inject the dynamic username and avatar here */}
+          <div className="profile" onClick={handleProfileClick}>
+            <div className="avatar">{avatar}</div>
+            <p className="username">{username}</p>
           </div>
         </div>
       </div>
